@@ -12,6 +12,16 @@
   [path]
   (EmbeddedGraphDatabase. path))
 
+(defn set-db!
+  [db]
+  (alter-var-root #'*db* (constantly db)))
+
+(defn shutdown
+  ([]
+     (.shutdown *db*))
+  ([db]
+     (.shutdown db)))
+
 (defn reference-node
   ([]
      (reference-node *db*))
